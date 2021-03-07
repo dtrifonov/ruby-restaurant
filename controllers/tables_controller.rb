@@ -15,11 +15,11 @@ class TablesController < AppController
   end
 
   def get_table
-    @errors = []
     table_index = select_table
     table = Table.find_by_index(table_index)
     if(table.nil?)
-      errors << 'Invalid table'
+      @errors = []
+      @errors << 'Invalid table'
       get_table
     end
     table
@@ -33,12 +33,13 @@ class TablesController < AppController
   def select_table
     tables_list = Table.all
     prompt = TablePrompt.new(tables_list)
-    prompt.error_str = errors.join("\n")
+    prompt.error_str = @errors.join("\n")
     prompt.show
   end
 
   def select_status_input(table)
     prompt = StatusPrompt.new(table)
+    prompt.error_str = @errors.join("\n")
     prompt.show
   end
 
