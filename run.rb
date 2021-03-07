@@ -1,3 +1,4 @@
+#!/usr/bin/ruby
 require './app'
 
 catch :ctrl_c do
