@@ -1,0 +1,11 @@
+1. Input waiter pin
+2. Select table
+3. Change status
+4. Write new status in a File
+
+Configuration
+Waiter
+  name
+  registration number
+Table
+  number of seats
