@@ -1,9 +1,10 @@
 require './data/app_data'
+require './config/app_config'
 
 class Model
 
   def self.app_data
-    file = './data/data.yml'
-    AppData.new(file)
+    config = AppConfig.get_config
+    AppData.new(config["data"]["file"])
   end
 end

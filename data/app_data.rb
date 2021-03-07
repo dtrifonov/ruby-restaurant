@@ -1,10 +1,11 @@
+require 'fileutils'
 require 'yaml'
 
 class AppData
 
   def initialize(file)
-    @file = file
-    @data = YAML.load_file(@file)
+    return unless File.file?(file)
+    @data = YAML.load_file(file)
   end
 
   def waiters

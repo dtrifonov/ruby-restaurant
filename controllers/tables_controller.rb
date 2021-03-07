@@ -3,13 +3,15 @@ require './prompts/table_prompt'
 require './prompts/status_prompt'
 require './controllers/app_controller'
 require './models/table'
+require './services/table_status'
 
 class TablesController < AppController
 
-  def show
+  def handle_prompt(user)
     table = get_table
     status = get_status(table)
-    require 'pry';binding.pry;
+    service = TableStatus.new
+    service.handle(table, status, user)
   end
 
   def get_table
@@ -18,7 +20,7 @@ class TablesController < AppController
     table = Table.find_by_index(table_index)
     if(table.nil?)
       errors << 'Invalid table'
-      get_table_index
+      get_table
     end
     table
   end

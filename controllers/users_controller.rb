@@ -5,13 +5,14 @@ require './models/user'
 class UsersController
   attr_accessor :errors
 
-  def show
+  def handle_prompt
     @errors = []
-    pin = get_login_pin.to_i
-    user = get_login_user(pin)
+    pin = get_login_pin
+    return if pin.nil?
+    user = get_login_user(pin.to_i)
     if user.nil?
       errors << "Invalid pin"
-      show
+      handle_prompt
     end
     user
   end
