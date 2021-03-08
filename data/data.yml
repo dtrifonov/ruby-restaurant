@@ -1,13 +1,13 @@
 waiters:
   1:
     name: 'Waiter 1'
-    pin: 1234
+    pin: 'DE28354462304788'
   2:
     name: 'Waiter 2'
-    pin: 2345
+    pin: '7487D25980FBCF2E'
   3:
     name: 'Waiter 3'
-    pin: 3456
+    pin: '2504643BB353B1A'
 tables:
   1:
     name: 'Table 1'

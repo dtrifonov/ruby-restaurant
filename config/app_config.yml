@@ -2,3 +2,5 @@ data:
   file: './data/data.yml'
 status_csv:
   file: './data/table_statuses.csv'
+secret:
+  key: "secret"

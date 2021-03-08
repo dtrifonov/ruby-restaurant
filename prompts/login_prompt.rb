@@ -10,7 +10,7 @@ class LoginPrompt < AppPrompt
   end
 
   def show
-    @prompt.handle(prompt_str, options)
+    @prompt.handle(prompt_str, options, true)
     return if @prompt.aborted?
     @prompt.raw_answer
   end

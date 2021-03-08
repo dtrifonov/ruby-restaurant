@@ -1,20 +1,26 @@
 require 'singleton'
+require 'io/console'
 
 class AppDialog
   include Singleton
   attr_reader :question, :options, :answer
 
-  def handle(question, options)
+  def handle(question, options, password=false)
     @question = question
     @options = options << abort_prompt
     @answer = ""
+    @password = password
     prompt until (processed? || aborted? || raw_input?)
     processed? || raw_input?
   end
 
   def prompt
     STDOUT.puts dialog
-    @answer = STDIN.gets.strip.downcase
+    if @password
+      @answer = STDIN.noecho(&:gets).strip.downcase
+    else
+      @answer = STDIN.gets.strip.downcase
+    end
   end
 
   def dialog

@@ -11,6 +11,7 @@ class TablePrompt < AppPrompt
 
   def show
     @prompt.handle(prompt_str, options)
+    return if @prompt.aborted?
     @prompt.selected_index
   end
 

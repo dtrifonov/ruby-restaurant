@@ -1,10 +1,12 @@
 require './controllers/users_controller'
 require './controllers/tables_controller'
+require './controllers/statuses_controller'
 
 class App
 
   def initialize
     @user = nil
+    @table = nil
     @config = AppConfig.load_config('./config/app_config.yml')
   end
 
@@ -16,11 +18,20 @@ class App
       when 'tables'
         unless @user.nil?
           controller = TablesController.new
-          controller.handle_prompt(@user)
-          @user = nil
-          prompt_label = 'login'
+          @table = controller.handle_prompt(@user)
+          if @table.nil?
+            prompt_label = 'login'
+          else
+            prompt_label = 'statuses'
+          end
         end
-      else 'login'
+      when 'statuses'
+        unless @user.nil? || @table.nil?
+          controller = StatusesController.new
+          controller.handle_prompt(@user, @table)
+          prompt_label = 'tables'
+        end
+      else #'login'
         controller = UsersController.new
         @user = controller.handle_prompt
         exit_app("The application has been terminated", 0) if @user.nil?
