@@ -16,11 +16,11 @@ class AppDialog
 
   def prompt
     STDOUT.puts dialog
-    if @password
-      @answer = STDIN.noecho(&:gets).strip.downcase
-    else
-      @answer = STDIN.gets.strip.downcase
-    end
+    @answer = password_prompt? ? STDIN.noecho(&:gets).strip.downcase : STDIN.gets.strip.downcase
+  end
+
+  def password_prompt?
+    @password
   end
 
   def dialog

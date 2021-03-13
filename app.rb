@@ -55,11 +55,7 @@ class App
     unless @user.nil?
       controller = TablesController.new
       @table = controller.handle_prompt(@user)
-      if @table.nil?
-        @prompt_label = 'login'
-      else
-        @prompt_label = 'statuses'
-      end
+      @prompt_label = @table.nil? ? 'login' : 'statuses'
     end
   end
 
