@@ -4,7 +4,12 @@ class AppPrompt
   attr_accessor :message, :options, :error_str
 
   def initialize
+    clear_screen
     @prompt = AppDialog.instance
+  end
+
+  def clear_screen
+    system("clear") || system("cls")
   end
 
   def show
