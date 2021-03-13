@@ -1,4 +1,4 @@
-require './models/model'
+require_relative './model'
 
 class User < Model
 

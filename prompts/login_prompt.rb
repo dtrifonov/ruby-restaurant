@@ -1,4 +1,4 @@
-require './prompts/app_prompt'
+require_relative './app_prompt'
 
 class LoginPrompt < AppPrompt
 

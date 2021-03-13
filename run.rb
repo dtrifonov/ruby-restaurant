@@ -1,5 +1,5 @@
 #!/usr/bin/ruby
-require './app'
+require_relative './app'
 
 catch :ctrl_c do
   trap("SIGINT") do

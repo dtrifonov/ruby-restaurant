@@ -1,13 +1,18 @@
-require './controllers/users_controller'
-require './controllers/tables_controller'
-require './controllers/statuses_controller'
+require_relative './controllers/users_controller'
+require_relative './controllers/tables_controller'
+require_relative './controllers/statuses_controller'
 
 class App
   attr_accessor :prompt_label
   attr_reader :user, :table
 
+  def self.root_dir
+    File.dirname(__FILE__)
+  end
+
   def initialize
-    @config = AppConfig.load_config('./config/app_config.yml')
+    config_file = File.join(App.root_dir, './config/app_config.yml')
+    @config = AppConfig.load_config(config_file)
     init_prompts
   end
 

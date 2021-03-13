@@ -1,8 +1,8 @@
-require './data/app_data'
-require './prompts/login_prompt'
-require './models/user'
-require './controllers/app_controller'
-require './lib/string'
+require_relative '../data/app_data'
+require_relative '../prompts/login_prompt'
+require_relative '../models/user'
+require_relative '../lib/string'
+require_relative './app_controller'
 
 class UsersController < AppController
 

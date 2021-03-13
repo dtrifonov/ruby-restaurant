@@ -1,7 +1,7 @@
-require './data/app_data'
-require './prompts/table_prompt'
-require './controllers/app_controller'
-require './models/table'
+require_relative '../data/app_data'
+require_relative '../prompts/table_prompt'
+require_relative '../models/table'
+require_relative './app_controller'
 
 class TablesController < AppController
 

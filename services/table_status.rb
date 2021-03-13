@@ -4,7 +4,7 @@ require 'date'
 class TableStatus
   def initialize
     config = AppConfig.get_config
-    @file = config["status_csv"]["file"]
+    @file = File.join(App.root_dir, config['status_csv']['file'])
     unless File.file?(@file)
       store_line(headers)
     end

@@ -1,7 +1,7 @@
-require './data/app_data'
-require './prompts/status_prompt'
-require './controllers/app_controller'
-require './services/table_status'
+require_relative '../data/app_data'
+require_relative '../prompts/status_prompt'
+require_relative '../services/table_status'
+require_relative './app_controller'
 
 class StatusesController < AppController
   

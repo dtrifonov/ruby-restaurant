@@ -1,4 +1,4 @@
-require './lib/app_dialog'
+require_relative '../lib/app_dialog'
 
 class AppPrompt
   attr_accessor :message, :options, :error_str
